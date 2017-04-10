@@ -24,7 +24,7 @@ import FetchError from './fetch-error';
  * @param   Object   opts  Fetch options
  * @return  Promise
  */
-export default function fetch(url, opts) {
+export default function fetch(url, opts, nodeOpts) {
 
 	// allow custom promise
 	if (!fetch.Promise) {
@@ -38,13 +38,15 @@ export default function fetch(url, opts) {
 		// build request object
 		const request = new Request(url, opts);
 		const options = getNodeRequestOptions(request);
-
+		
 		const send = (options.protocol === 'https:' ? https : http).request;
 
 		// http.request only support string as host header, this hack make custom host header possible
 		if (options.headers.host) {
 			options.headers.host = options.headers.host[0];
 		}
+
+		Object.assign(options, nodeOpts);
 
 		// send request
 		const req = send(options);
