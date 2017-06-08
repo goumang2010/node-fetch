@@ -24,7 +24,7 @@ import FetchError from './fetch-error';
  * @param   Object   opts  Fetch options
  * @return  Promise
  */
-export default function fetch(url, opts, nodeOpts) {
+export default function fetch(url, opts, nodeOpts, streamOnly = false) {
 
 	// allow custom promise
 	if (!fetch.Promise) {
@@ -126,6 +126,12 @@ export default function fetch(url, opts, nodeOpts) {
 				, size: request.size
 				, timeout: request.timeout
 			};
+
+			if (streamOnly) {
+				response_options.body = body;
+				resolve(response_options);
+				return;
+			}
 
 			// HTTP-network fetch step 16.1.2
 			const codings = headers.get('Content-Encoding');
