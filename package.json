@@ -14,6 +14,7 @@
   },
   "scripts": {
     "build": "cross-env BABEL_ENV=rollup rollup -c",
+    "publish": "node publish.js",
     "test": "cross-env BABEL_ENV=test mocha --compilers js:babel-register test/test.js",
     "report": "cross-env BABEL_ENV=coverage nyc --reporter lcov --reporter text mocha -R spec test/test.js",
     "coverage": "cross-env BABEL_ENV=coverage nyc --reporter json --reporter text mocha -R spec test/test.js && codecov -f coverage/coverage-final.json"
@@ -41,10 +42,13 @@
     "chai-as-promised": "^6.0.0",
     "chai-iterator": "^1.1.1",
     "chai-string": "^1.3.0",
+    "chalk": "^2.0.1",
     "codecov": "^1.0.1",
     "cross-env": "^3.1.4",
     "form-data": ">=1.0.0",
+    "inquirer": "^3.2.0",
     "is-builtin-module": "^1.0.0",
+    "js-beautify": "^1.6.14",
     "mocha": "^3.1.2",
     "nyc": "^10.0.0",
     "parted": "^0.1.1",
