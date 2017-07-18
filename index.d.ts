@@ -62,6 +62,7 @@ type RequestCache =
 	"force-cache" | "only-if-cached";
 
 export class Headers {
+	constructor(input?: any);
 	append(name: string, value: string): void;
 	delete(name: string): void;
 	get(name: string): string;
@@ -107,4 +108,4 @@ type HeaderInit = Headers | Array<string>;
 type BodyInit = ArrayBuffer | ArrayBufferView | string | NodeJS.ReadableStream;
 type RequestInfo = Request | string;
 
-export default function fetch(url: string | Request, init?: RequestInit, nodeOpts?: RequestOptions, streamOnly?: boolean = false): Promise<Response>;
+export default function fetch(url: string | Request, init?: RequestInit, nodeOpts?: RequestOptions, streamOnly?: boolean): Promise<Response>;
