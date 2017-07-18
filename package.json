@@ -1,6 +1,6 @@
 {
-  "name": "node-fetch-custom",
-  "version": "1.2.0",
+  "name": "node-fetch-sp",
+  "version": "1.0.0",
   "description": "A light-weight module that brings window.fetch to node.js",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
